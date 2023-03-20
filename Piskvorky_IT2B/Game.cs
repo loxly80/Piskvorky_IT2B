@@ -13,20 +13,20 @@ namespace Piskvorky_IT2B
     {
       get
       {
-        if(GameObjects.Count == 0)
+        if (GameObjects.Count == 0)
         {
           return 0;
-        } 
-        else if(GameObjects.Count == 1)
+        }
+        else if (GameObjects.Count == 1)
         {
           return 5;
         }
         else
         {
           int top = 0;
-          foreach(GameObject obj in GameObjects)
+          foreach (GameObject obj in GameObjects)
           {
-            if(obj.Y > top)
+            if (obj.Y > top)
             {
               top = obj.Y;
             }
@@ -58,6 +58,58 @@ namespace Piskvorky_IT2B
             }
           }
           return Math.Abs(bottom) + 5;
+        }
+      }
+    }
+    public int Left
+    {
+      get
+      {
+        if (GameObjects.Count == 0)
+        {
+          return 0;
+        }
+        else if (GameObjects.Count == 1)
+        {
+          return 5;
+        }
+        else
+        {
+          int left = 0;
+          foreach (GameObject obj in GameObjects)
+          {
+            if (obj.X < left)
+            {
+              left = obj.X;
+            }
+          }
+          return Math.Abs(left) + 5;
+        }
+      }
+    }
+    public int Right
+    {
+      get
+      {
+        if (GameObjects.Count == 0)
+        {
+          return 0;
+        }
+        else if (GameObjects.Count == 1)
+        {
+          return 5;
+        }
+        else
+        {
+          int right = 0;
+          foreach (GameObject obj in GameObjects)
+          {
+            if (obj.X > right)
+            {
+              right = obj.X;
+            }
+          }
+          return Math.Abs(right) + 5;
         }
       }
     }
