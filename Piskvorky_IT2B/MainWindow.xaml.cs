@@ -23,6 +23,46 @@ namespace Piskvorky_IT2B
     public MainWindow()
     {
       InitializeComponent();
+      Game game = new Game();
+      //MessageBox.Show($"Top:{game.Top}; Right:{game.Right}; Bottom:{game.Bottom}; Left:{game.Left}");
+      //game.GameObjects.Add(new GameObject(0,0,GameObject.ValueType.Circle));
+      //MessageBox.Show($"Top:{game.Top}; Right:{game.Right}; Bottom:{game.Bottom}; Left:{game.Left}");
+      //game.GameObjects.Add(new GameObject(1, 2, GameObject.ValueType.Circle));
+      //MessageBox.Show($"Top:{game.Top}; Right:{game.Right}; Bottom:{game.Bottom}; Left:{game.Left}");
+      //game.GameObjects.Add(new GameObject(1, -3, GameObject.ValueType.Circle));
+      //MessageBox.Show($"Top:{game.Top}; Right:{game.Right}; Bottom:{game.Bottom}; Left:{game.Left}");
+      //game.GameObjects.Add(new GameObject(-4, -3, GameObject.ValueType.Circle));
+      //MessageBox.Show($"Top:{game.Top}; Right:{game.Right}; Bottom:{game.Bottom}; Left:{game.Left}");
+    }
+
+    private void Window_Initialized(object sender, EventArgs e)
+    {
+      Grid grid = new Grid();
+      grid.Height = 150;
+      grid.Width = 150;
+      for (int x = 0; x < 6; x++)
+      {
+        grid.ColumnDefinitions.Add(new ColumnDefinition());
+      }
+      for (int y = 0; y < 6; y++)
+      {
+        grid.RowDefinitions.Add(new RowDefinition());
+      }
+      this.AddChild(grid);
+
+      for (int x = 0; x < 6; x++)
+      {
+        for (int y = 0; y < 6; y++)
+        {
+          Button button = new Button();
+          button.HorizontalAlignment = HorizontalAlignment.Stretch;
+          button.VerticalAlignment = VerticalAlignment.Stretch;
+          button.Background = new SolidColorBrush(Colors.LightSalmon);
+          Grid.SetColumn(button, x);
+          Grid.SetRow(button, y);
+          grid.Children.Add(button);
+        }
+      }
     }
   }
 }
