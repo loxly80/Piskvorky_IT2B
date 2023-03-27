@@ -52,13 +52,11 @@ namespace Piskvorky_IT2B
       return grid;
     }
 
-    private void Window_Initialized(object sender, EventArgs e)
+    private void ButtonsToGrid(Grid grid)
     {
-      Grid grid = CreateGrid(50, 6, 6);
-
-      for (int x = 0; x < 6; x++)
+      for (int x = 0; x < grid.ColumnDefinitions.Count; x++)
       {
-        for (int y = 0; y < 6; y++)
+        for (int y = 0; y < grid.RowDefinitions.Count; y++)
         {
           Button button = new Button();
           button.HorizontalAlignment = HorizontalAlignment.Stretch;
@@ -69,6 +67,12 @@ namespace Piskvorky_IT2B
           grid.Children.Add(button);
         }
       }
+    }
+
+    private void Window_Initialized(object sender, EventArgs e)
+    {
+      Grid grid = CreateGrid(10, 10, 10);
+      ButtonsToGrid(grid);
     }
   }
 }
