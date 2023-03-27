@@ -35,20 +35,26 @@ namespace Piskvorky_IT2B
       //MessageBox.Show($"Top:{game.Top}; Right:{game.Right}; Bottom:{game.Bottom}; Left:{game.Left}");
     }
 
-    private void Window_Initialized(object sender, EventArgs e)
+    private Grid CreateGrid(int size, int countX, int countY)
     {
       Grid grid = new Grid();
-      grid.Height = 150;
-      grid.Width = 150;
-      for (int x = 0; x < 6; x++)
+      grid.Height = size * countY;
+      grid.Width = size * countX;
+      for (int x = 0; x < countX; x++)
       {
         grid.ColumnDefinitions.Add(new ColumnDefinition());
       }
-      for (int y = 0; y < 6; y++)
+      for (int y = 0; y < countY; y++)
       {
         grid.RowDefinitions.Add(new RowDefinition());
       }
       this.AddChild(grid);
+      return grid;
+    }
+
+    private void Window_Initialized(object sender, EventArgs e)
+    {
+      Grid grid = CreateGrid(50, 6, 6);
 
       for (int x = 0; x < 6; x++)
       {
